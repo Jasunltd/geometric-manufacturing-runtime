@@ -2,6 +2,7 @@
   "name": "geometric-manufacturing-runtime",
   "version": "0.2.0",
   "private": true,
+  "license": "MIT",
   "description": "Constraint-driven generative manufacturing design: typed design search, build123d/FEA, CAM/Motion IR, controller verification, manufacturing dossiers, and observation-driven process recovery.",
   "type": "module",
   "engines": {

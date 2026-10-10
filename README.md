@@ -161,3 +161,12 @@ Generated evidence under `artifacts/` is intentionally ignored by git. Frozen ex
 - generated NC, simulation, and synthetic metrology do not authorize a physical machine.
 
 For the detailed rationale, see [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## License
+
+The original project-authored software code and associated original software
+documentation are staged under the [MIT License](LICENSE) in this unpublished
+candidate. See [license scope](LICENSE-SCOPE.md) for exclusions and rights
+review. This does not relicense third-party tools, sources, measurements or
+datasets, nor establish publication clearance.
+
