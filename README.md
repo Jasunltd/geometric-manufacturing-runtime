@@ -170,3 +170,11 @@ candidate. See [license scope](LICENSE-SCOPE.md) for exclusions and rights
 review. This does not relicense third-party tools, sources, measurements or
 datasets, nor establish publication clearance.
 
+
+
+## Sources and licensing
+
+- [MIT software license](LICENSE)
+- [License scope and separate third-party rights](LICENSE-SCOPE.md)
+- [Source attribution and original-versus-upstream provenance](ATTRIBUTION.md)
+- [Dataset, engineering-tool and standards attribution](THIRD-PARTY-DATA.md)
