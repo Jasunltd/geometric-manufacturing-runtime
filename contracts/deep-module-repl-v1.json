@@ -1,0 +1,26 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.repl",
+  "public": {
+    "exports": [
+      {
+        "name": "GeometricManufacturingReplSession",
+        "arity": 0,
+        "returns": "ReplSession"
+      }
+    ]
+  },
+  "encapsulated": [
+    "closed non-eval command parsing",
+    "session-local program and plan state",
+    "semantic operation dispatch",
+    "derived G-code preview",
+    "inspection/status projection",
+    "local non-authoritative history"
+  ],
+  "depth": {
+    "maxPublicSymbols": 1,
+    "maxArgsPerExport": 1
+  },
+  "authority": "none"
+}

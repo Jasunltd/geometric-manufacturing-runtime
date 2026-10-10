@@ -1,0 +1,19 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.cam",
+  "public": {
+    "exports": [
+      {"name":"planCandidateManufacturing","arity":2,"returns":"ManufacturingPlan"}
+    ]
+  },
+  "encapsulated": [
+    "bounded 2.5D process planning",
+    "tool and setup selection",
+    "process assumptions",
+    "semantic operation sequencing",
+    "tool compensation intent",
+    "manufacturing-plan content identity"
+  ],
+  "depth": {"maxPublicSymbols":1,"maxArgsPerExport":2},
+  "authority": "none"
+}

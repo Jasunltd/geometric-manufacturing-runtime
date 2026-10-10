@@ -1,0 +1,22 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.design",
+  "public": {
+    "exports": [
+      {"name":"compileDesignProblem","arity":1,"returns":"CompileResult<DesignProblem>"},
+      {"name":"synthesizeDesignSpace","arity":1,"returns":"DesignSynthesis"}
+    ]
+  },
+  "encapsulated": [
+    "open DesignProblem validation",
+    "bounded grammar parameter enumeration",
+    "semantic profile and interface construction",
+    "analytical structural screening",
+    "manufacturing envelope and edge-distance feasibility",
+    "explicit rejection evidence",
+    "deterministic objective ranking",
+    "candidate and synthesis content identity"
+  ],
+  "depth": {"maxPublicSymbols":2,"maxArgsPerExport":1},
+  "authority": "none"
+}

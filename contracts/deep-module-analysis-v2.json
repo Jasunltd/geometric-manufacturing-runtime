@@ -1,0 +1,24 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.analysis",
+  "public": {
+    "exports": [
+      {"name":"compileStructuralStudyRequest","arity":2,"returns":"StructuralStudyCompileResult"},
+      {"name":"bindExistingFixtureStudyToolchain","arity":2,"returns":"ExistingFixtureStudyConfig"},
+      {"name":"bindExistingFixtureStudyResult","arity":3,"returns":"CompileResult<StructuralVerificationBinding>"}
+    ]
+  },
+  "encapsulated": [
+    "candidate-to-verifier schema mapping",
+    "unsupported-geometry refusal",
+    "candidate/problem digest binding",
+    "verification request identity",
+    "external verifier geometry-digest compatibility",
+    "recorded solver result validation",
+    "screening requirement comparison without authority promotion",
+    "source-bound verification binding identity",
+    "separation of semantic request from mechanism toolchain"
+  ],
+  "depth": {"maxPublicSymbols":3,"maxArgsPerExport":3},
+  "authority": "none"
+}

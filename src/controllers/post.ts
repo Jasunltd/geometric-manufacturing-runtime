@@ -1,0 +1,222 @@
+import { semanticDigest } from "../integrity/canonical.js";
+import type { Digest } from "../model.js";
+import type { MotionCommand, MotionProgram } from "../motion/model.js";
+import type {
+  ControllerProfile,
+  ControllerTarget,
+} from "./profiles.js";
+
+export interface NcTrace {
+  readonly line: number;
+  readonly commandIndex: number;
+  readonly command: MotionCommand["_tag"];
+}
+
+export interface ControllerProgram {
+  readonly schema: "gmr.controller-program/v1";
+  readonly target: ControllerTarget;
+  readonly profileId: string;
+  readonly motionDigest: Digest;
+  readonly text: string;
+  readonly trace: readonly NcTrace[];
+  readonly artifactDigest: Digest;
+}
+
+function fmt(value: number): string {
+  const normalized = Math.abs(value) < 1e-12 ? 0 : value;
+  return normalized
+    .toFixed(6)
+    .replace(/\.0+$/, "")
+    .replace(/(\.\d*?)0+$/, "$1");
+}
+
+function axisWords(
+  position: Partial<Readonly<{ x: number; y: number; z: number }>>,
+): string {
+  return [
+    position.x === undefined ? undefined : "X" + fmt(position.x),
+    position.y === undefined ? undefined : "Y" + fmt(position.y),
+    position.z === undefined ? undefined : "Z" + fmt(position.z),
+  ]
+    .filter((value): value is string => value !== undefined)
+    .join(" ");
+}
+
+function pointWords(point: Readonly<{ x: number; y: number }>): string {
+  return "X" + fmt(point.x) + " Y" + fmt(point.y);
+}
+
+function commandLines(
+  command: MotionCommand,
+  profile: ControllerProfile,
+): readonly string[] {
+  switch (command._tag) {
+    case "SetUnits":
+      return ["G21"];
+    case "SetPlane":
+      return ["G17"];
+    case "SetDistanceMode":
+      return ["G90"];
+    case "SetFeedMode":
+      return ["G94"];
+    case "SetWorkOffset":
+      return [profile.supports.workOffset];
+    case "CutterCompCancel":
+      return ["G40"];
+    case "ToolChange":
+      return [
+        "T" +
+          command.toolNumber +
+          " " +
+          profile.toolChangeMCode +
+          " (" +
+          command.toolId +
+          ")",
+      ];
+    case "ToolLengthOn": {
+      const activation =
+        profile.supports.toolLengthComp +
+        " H" +
+        String(command.toolNumber).padStart(2, "0");
+      return profile.supports.toolLengthActivation === "same-block-z"
+        ? [activation + " Z" + fmt(command.safeZ)]
+        : [activation, "G00 Z" + fmt(command.safeZ)];
+    }
+    case "ToolLengthOff":
+      return ["G49"];
+    case "SpindleOn":
+      return [
+        "S" + fmt(command.rpm) + " " + profile.spindleClockwiseMCode,
+      ];
+    case "SpindleOff":
+      return [profile.spindleStopMCode];
+    case "CoolantOn":
+      return [profile.coolantOnMCode];
+    case "CoolantOff":
+      return [profile.coolantOffMCode];
+    case "Rapid":
+      return ["G00 " + axisWords(command.position)];
+    case "FeedLinear":
+      return [
+        "G01 " +
+          axisWords(command.position) +
+          " F" +
+          fmt(command.feedMmPerMin),
+      ];
+    case "DrillCycle":
+      return [
+        profile.supports.drillCycle +
+          " X" +
+          fmt(command.point.x) +
+          " Y" +
+          fmt(command.point.y) +
+          " Z" +
+          fmt(command.z) +
+          " R" +
+          fmt(command.retractZ) +
+          " F" +
+          fmt(command.feedMmPerMin),
+      ];
+    case "BoreCycle":
+      return [
+        profile.supports.boreCycle +
+          " X" +
+          fmt(command.point.x) +
+          " Y" +
+          fmt(command.point.y) +
+          " Z" +
+          fmt(command.z) +
+          " R" +
+          fmt(command.retractZ) +
+          " F" +
+          fmt(command.feedMmPerMin),
+      ];
+    case "CutterCompLeadIn":
+      return [
+        "G01 " +
+          (command.side === "left" ? "G41" : "G42") +
+          " D" +
+          String(command.register).padStart(2, "0") +
+          " " +
+          pointWords(command.end) +
+          " F" +
+          fmt(command.feedMmPerMin),
+      ];
+    case "CutterCompLeadOut":
+      return [
+        "G01 G40 " +
+          pointWords(command.end) +
+          " F" +
+          fmt(command.feedMmPerMin),
+      ];
+    case "CancelCannedCycle":
+      return ["G80"];
+    case "ProgramEnd":
+      return [profile.programEnd];
+  }
+}
+
+function assertBlockSemantics(
+  lines: readonly string[],
+  profile: ControllerProfile,
+): void {
+  for (const [index, line] of lines.entries()) {
+    const mCodes = line.match(/\bM\d+\b/gi) ?? [];
+    if (mCodes.length > profile.maxMCommandsPerBlock) {
+      throw new TypeError(
+        profile.id +
+          " block " +
+          (index + 1) +
+          " exceeds max M-code count",
+      );
+    }
+  }
+}
+
+export function postMotionProgram(
+  motion: MotionProgram,
+  profile: ControllerProfile,
+): ControllerProgram {
+  const body: string[] = [];
+  const trace: NcTrace[] = [];
+
+  if (profile.percentDelimited) body.push("%");
+  if (profile.programNumber !== undefined) {
+    body.push("O" + String(profile.programNumber).padStart(5, "0"));
+  }
+  body.push(
+    "(generated by geometric-manufacturing-runtime)",
+    "(controller profile " + profile.id + ")",
+    "(motion " + motion.motionDigest + ")",
+  );
+
+  for (const [commandIndex, command] of motion.commands.entries()) {
+    for (const line of commandLines(command, profile)) {
+      body.push(line);
+      trace.push({
+        line: body.length,
+        commandIndex,
+        command: command._tag,
+      });
+    }
+  }
+
+  if (profile.percentDelimited) body.push("%");
+  assertBlockSemantics(body, profile);
+  const text = body.join("\n") + "\n";
+  const artifactDigest = semanticDigest({
+    target: profile.target,
+    profileId: profile.id,
+    motionDigest: motion.motionDigest,
+    text,
+  });
+  return {
+    schema: "gmr.controller-program/v1",
+    target: profile.target,
+    profileId: profile.id,
+    motionDigest: motion.motionDigest,
+    text,
+    trace,
+    artifactDigest,
+  };
+}

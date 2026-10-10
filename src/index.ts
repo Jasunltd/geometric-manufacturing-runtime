@@ -1,0 +1,201 @@
+export type {
+  AxisRange,
+  BindingRefusalCode,
+  BindingResult,
+  BoxStock,
+  CapsuleSweepOperation,
+  CompileResult,
+  Digest,
+  ExecutionPlan,
+  FlatEndMillTool,
+  GCodeArtifact,
+  GeneratedCapsule,
+  MachineModel,
+  ManufacturingProgram,
+  ManufacturingProgramDefinition,
+  MotionPrimitive,
+  PhysicalStateSnapshot,
+  Point2,
+  PreparedExecutionArtifact,
+  RadialCompensation,
+  SnapshotFreshness,
+  ToolMeasurement,
+} from "./model.js";
+
+export {
+  applyDesignAction,
+  compileDesignProblem,
+  enumerateDesignActions,
+  evaluateDesignState,
+  searchDesign,
+  synthesizeDesignSpace,
+  type CandidateHole,
+  type CandidateMetrics,
+  type CandidateViolation,
+  type CandidateViolationCode,
+  type CircularKeepOut,
+  type DesignAction,
+  type DesignActionApplication,
+  type DesignCandidate,
+  type DesignConstruction,
+  type DesignObjective,
+  type DesignProblem,
+  type DesignObligation,
+  type DesignRequirements,
+  type DesignSearch,
+  type DesignSearchEdge,
+  type DesignSearchOptions,
+  type DesignState,
+  type DesignStateEvaluation,
+  type DesignSynthesis,
+  type LoadCase,
+  type MaterialDefinition,
+  type MountInterface,
+  type NumericRange,
+  type PayloadInterface,
+  type ProfilePoint,
+  type RootButtressParameters,
+  type TaperedPlateArmGrammar,
+  type TaperedPlateArmParameters,
+  type ThreeAxisMillingCapability,
+} from "./design/index.js";
+
+export {
+  assessProcessException,
+  verifyRecovery,
+  renderRecoveryCaseStudyMarkdown,
+  RecoveryRenderer,
+  RecoveryRendererFailure,
+  reportlabRecoveryRendererLayer,
+  compileProcessObservation,
+  compileProcessObservations,
+  compileProcessRecoveryScenario,
+  runProcessRecoveryScenario,
+  applyRecoveryAction,
+  createProcessControlState,
+  type MeasurementSystemState,
+  type ObservationSource,
+  type ProcessControlState,
+  type ProcessDiagnosisCode,
+  type ProcessObservation,
+  type ProcessRecoveryCaseStudy,
+  type ProcessRecoveryCaseStudyArtifacts,
+  type ProcessRecoveryScenario,
+  type ReportlabRecoveryRendererConfig,
+  type RecoveryAction,
+  type RecoveryActionApplication,
+  type RecoveryAssessment,
+  type RecoveryVerification,
+  type ToolAdjustment,
+} from "./recovery/index.js";
+
+export {
+  buildManufacturingDossier,
+  DossierRenderer,
+  DossierRendererFailure,
+  reportlabDossierRendererLayer,
+  fitCircle2D,
+  fitPlane,
+  simulateMetrology,
+  type BasicDimension,
+  type CapabilityProjection,
+  type DatumDefinition,
+  type DfmCheck,
+  type DfmReport,
+  type DossierArtifactRef,
+  type DossierArtifacts,
+  type DrawingSpec,
+  type FittedCircle,
+  type FittedPlane,
+  type FirstArticleObservation,
+  type GeometricRequirement,
+  type InspectionCharacteristic,
+  type InspectionPlan,
+  type ManufacturingDossier,
+  type Point3,
+  type ProveoutCheck,
+  type ReportlabDossierRendererConfig,
+  type SimulatedMetrology,
+  type SizeRequirement,
+  type VirtualProveout,
+} from "./dossier/index.js";
+
+export {
+  GeometryBackend,
+  GeometryBackendFailure,
+  build123dGeometryBackendLayer,
+  type Build123dBackendConfig,
+  type Build123dRealization,
+  type GeometryArtifactRef,
+  type GeometryBackendService,
+} from "./geometry/index.js";
+
+export {
+  bindExistingFixtureStudyResult,
+  bindExistingFixtureStudyToolchain,
+  compileStructuralStudyRequest,
+  type ExistingFixtureStudyConfig,
+  type StructuralStudyCompileResult,
+  type StructuralStudyRequest,
+  type StructuralToolchainBinding,
+  type StructuralVerificationBinding,
+  type StructuralVerificationDisposition,
+} from "./analysis/index.js";
+
+export {
+  planCandidateManufacturing,
+  type CamOperation,
+  type CamSetup,
+  type ManufacturingPlan as CandidateManufacturingPlan,
+  type ToolDefinition,
+} from "./cam/index.js";
+
+export {
+  compileMotionProgram,
+  type MotionCommand as ControllerMotionCommand,
+  type MotionProgram as ControllerMotionProgram,
+} from "./motion/index.js";
+
+export {
+  GenericRs274Profile,
+  HaasNgcProfile,
+  LinuxCncProfile,
+  bindLinuxCncRs274Receipt,
+  compileLinuxCncVerificationFixture,
+  controllerProfile,
+  postMotionProgram,
+  type ControllerProfile,
+  type ControllerProgram,
+  type ControllerTarget,
+  type LinuxCncInterpreterVerificationBinding,
+  type LinuxCncRs274RecordedReceipt,
+  type LinuxCncVerificationFixture,
+  type NcTrace,
+} from "./controllers/index.js";
+
+export {
+  compileManufacturingProgram,
+  inspectGeneratedGeometry,
+} from "./program/index.js";
+export {
+  compileMachineModel,
+  compilePhysicalStateSnapshot,
+} from "./boundary/index.js";
+export {
+  bindExecutionPlan,
+  executionLifecycleMachine,
+} from "./execution/index.js";
+export { lowerExecutionPlanToGcode } from "./backends/index.js";
+export { prepareExecutionArtifact } from "./runtime/index.js";
+export {
+  buildFullSystemTrace,
+  type CyberPhysicalEvidenceBinding,
+  type EngineeringEvidenceBinding,
+  type ExecutionObservationBinding,
+  type FullSystemTrace,
+  type FullSystemTraceInput,
+} from "./integration/index.js";
+export {
+  GeometricManufacturingReplSession,
+  parseReplLine,
+} from "./repl/index.js";

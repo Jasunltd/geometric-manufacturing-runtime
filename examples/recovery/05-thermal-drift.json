@@ -1,0 +1,42 @@
+{
+  "schema": "gmr.process-recovery-scenario/v1",
+  "id": "thermal-drift",
+  "title": "Thermal Bias Corrected from In-Process Feedback",
+  "objective": "Use trusted machine temperature and in-process positional feedback to apply a bounded work-offset correction and verify the residual bias.",
+  "expectedDiagnosis": "thermal-drift",
+  "expectedRecommendedAction": "ApplyThermalWorkOffset",
+  "initialObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-THERMAL-01",
+      "source": {
+        "kind": "machine-feedback",
+        "systemId": "machine-probe",
+        "channel": "thermal-fiducial-probe"
+      },
+      "kind": "thermal-drift",
+      "baselineTemperatureC": 22,
+      "currentTemperatureC": 31,
+      "axis": "x",
+      "measuredBiasMm": 0.043,
+      "measurementSystemId": "machine-probe"
+    }
+  ],
+  "verificationObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-THERMAL-VERIFY-01",
+      "source": {
+        "kind": "machine-feedback",
+        "systemId": "machine-probe",
+        "channel": "thermal-fiducial-probe"
+      },
+      "kind": "thermal-drift",
+      "baselineTemperatureC": 22,
+      "currentTemperatureC": 31.5,
+      "axis": "x",
+      "measuredBiasMm": 0.006,
+      "measurementSystemId": "machine-probe"
+    }
+  ]
+}

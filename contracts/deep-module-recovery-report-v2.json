@@ -1,0 +1,18 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.recovery.presentation",
+  "public": {
+    "exports": [
+      {"name":"renderRecoveryCaseStudyMarkdown","arity":1,"returns":"string"},
+      {"name":"reportlabRecoveryRendererLayer","arity":1,"returns":"Layer<RecoveryRenderer>"}
+    ]
+  },
+  "encapsulated": [
+    "human-readable exception-report projection",
+    "deterministic PDF rendering",
+    "case-study artifact hashing",
+    "simulated-evidence labeling"
+  ],
+  "depth": {"maxPublicSymbols":2,"maxArgsPerExport":1},
+  "authority": "none"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.geometry",
+  "public": {
+    "exports": [
+      {"name":"build123dGeometryBackendLayer","arity":1,"returns":"Layer<GeometryBackend>"}
+    ]
+  },
+  "encapsulated": [
+    "Python worker protocol",
+    "build123d algebra realization",
+    "explicit geometric placement",
+    "STEP/STL/SVG generation",
+    "artifact byte hashing",
+    "worker-output validation",
+    "candidate identity binding",
+    "realization content identity"
+  ],
+  "depth": {"maxPublicSymbols":1,"maxArgsPerExport":1},
+  "authority": "none"
+}

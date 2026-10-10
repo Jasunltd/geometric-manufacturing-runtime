@@ -1,0 +1,18 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.motion",
+  "public": {
+    "exports": [
+      {"name":"compileMotionProgram","arity":2,"returns":"MotionProgram"}
+    ]
+  },
+  "encapsulated": [
+    "controller-neutral setup resolution",
+    "tool-change and process sequencing",
+    "canned-cycle motion semantics",
+    "cutter-compensation motion semantics",
+    "motion-program content identity"
+  ],
+  "depth": {"maxPublicSymbols":1,"maxArgsPerExport":2},
+  "authority": "none"
+}

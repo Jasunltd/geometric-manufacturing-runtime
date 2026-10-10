@@ -1,0 +1,97 @@
+{
+  "schema": "gmr.design-problem/v1",
+  "id": "sensor-bracket-topology-probe",
+  "units": "mm-N-MPa",
+  "interfaces": {
+    "mount": {
+      "id": "machine-frame-mount",
+      "datum": "A",
+      "mountHoleDiameterMm": 6.6,
+      "mountHoleXFromDatumMm": 12,
+      "mountHoleSpacingMm": 30
+    },
+    "payload": {
+      "id": "sensor-bore",
+      "boreDiameterMm": 16,
+      "axisXFromDatumMm": 70,
+      "endMarginMm": 15
+    }
+  },
+  "keepOuts": [],
+  "loadCases": [
+    {
+      "id": "LC-SENSOR-120N",
+      "interfaceId": "sensor-bore",
+      "forceN": -120,
+      "axis": "z"
+    }
+  ],
+  "requirements": {
+    "maxTipDeflectionMm": 0.145,
+    "minStaticFactorOfSafety": 2,
+    "minEdgeDistanceMm": 4,
+    "maxMassG": 250
+  },
+  "material": {
+    "id": "al-6061-t6-screening",
+    "label": "6061-T6 aluminum screening properties",
+    "youngsModulusMPa": 68900,
+    "poissonRatio": 0.33,
+    "densityKgPerM3": 2700,
+    "yieldStrengthMPa": 276,
+    "basis": "Nominal portfolio screening values; final design requires source-controlled material allowables and process-specific verification."
+  },
+  "manufacturing": {
+    "process": "three-axis-milling",
+    "maxSetups": 2,
+    "minimumProfileToolDiameterMm": 6,
+    "stock": {
+      "kind": "plate",
+      "maxXmm": 100,
+      "maxYmm": 70,
+      "maxZmm": 12
+    },
+    "controllerTargets": [
+      "haas-ngc",
+      "linuxcnc"
+    ]
+  },
+  "grammar": {
+    "family": "tapered-plate-arm",
+    "thicknessMm": {
+      "min": 6,
+      "max": 6,
+      "step": 2
+    },
+    "rootHalfWidthMm": {
+      "min": 24,
+      "max": 24,
+      "step": 3
+    },
+    "armHalfWidthMm": {
+      "min": 14,
+      "max": 14,
+      "step": 2
+    },
+    "tipHalfWidthMm": {
+      "min": 14,
+      "max": 14,
+      "step": 2
+    },
+    "rootButtressLengthMm": {
+      "min": 8,
+      "max": 20,
+      "step": 4
+    }
+  },
+  "objectives": [
+    {
+      "kind": "minimize-mass",
+      "priority": 1
+    },
+    {
+      "kind": "minimize-cycle-proxy",
+      "priority": 2
+    }
+  ]
+}

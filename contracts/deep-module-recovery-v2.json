@@ -1,0 +1,63 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.recovery",
+  "public": {
+    "exports": [
+      {
+        "name": "compileProcessObservation",
+        "arity": 1,
+        "returns": "CompileResult<ProcessObservation>"
+      },
+      {
+        "name": "compileProcessObservations",
+        "arity": 1,
+        "returns": "CompileResult<readonly ProcessObservation[]>"
+      },
+      {
+        "name": "compileProcessRecoveryScenario",
+        "arity": 1,
+        "returns": "CompileResult<ProcessRecoveryScenario>"
+      },
+      {
+        "name": "createProcessControlState",
+        "arity": 1,
+        "returns": "ProcessControlState"
+      },
+      {
+        "name": "assessProcessException",
+        "arity": 3,
+        "returns": "RecoveryAssessment"
+      },
+      {
+        "name": "applyRecoveryAction",
+        "arity": 3,
+        "returns": "RecoveryActionApplication"
+      },
+      {
+        "name": "verifyRecovery",
+        "arity": 3,
+        "returns": "RecoveryVerification"
+      },
+      {
+        "name": "runProcessRecoveryScenario",
+        "arity": 2,
+        "returns": "ProcessRecoveryCaseStudy"
+      }
+    ]
+  },
+  "encapsulated": [
+    "machine/metrology/human observation normalization",
+    "measurement-system trust gates",
+    "bounded diagnosis rules",
+    "admitted process-adjustment enumeration",
+    "process-control state transitions",
+    "no-compensation-on-untrusted-measurement behavior",
+    "post-adjustment verification",
+    "case-study provenance"
+  ],
+  "depth": {
+    "maxPublicSymbols": 8,
+    "maxArgsPerExport": 3
+  },
+  "authority": "none"
+}

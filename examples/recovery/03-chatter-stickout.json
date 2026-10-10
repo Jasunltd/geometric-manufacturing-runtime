@@ -1,0 +1,53 @@
+{
+  "schema": "gmr.process-recovery-scenario/v1",
+  "id": "chatter-excessive-stickout",
+  "title": "Chatter Traced to Actual Tool Stickout",
+  "objective": "Combine machine vibration with a human correction to stale tool-stickout metadata, shorten the profile tool, and verify stable cutting.",
+  "expectedDiagnosis": "chatter-excessive-stickout",
+  "expectedRecommendedAction": "SetToolStickout",
+  "initialObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-VIBRATION-01",
+      "source": {
+        "kind": "machine-feedback",
+        "systemId": "accelerometer",
+        "channel": "spindle-vibration"
+      },
+      "kind": "vibration",
+      "toolId": "T4.profile",
+      "chatterIndex": 1.36,
+      "rmsAccelerationG": 4.8
+    },
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-STICKOUT-HUMAN-01",
+      "source": {
+        "kind": "human",
+        "operatorId": "machinist-01",
+        "role": "machinist"
+      },
+      "kind": "human-correction",
+      "field": "tool-stickout-mm",
+      "toolId": "T4.profile",
+      "previousValue": 30,
+      "correctedValue": 42,
+      "reason": "Measured from holder face to cutter tip after the loaded assembly did not match the setup metadata."
+    }
+  ],
+  "verificationObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-VIBRATION-VERIFY-01",
+      "source": {
+        "kind": "machine-feedback",
+        "systemId": "accelerometer",
+        "channel": "spindle-vibration"
+      },
+      "kind": "vibration",
+      "toolId": "T4.profile",
+      "chatterIndex": 0.56,
+      "rmsAccelerationG": 1.7
+    }
+  ]
+}

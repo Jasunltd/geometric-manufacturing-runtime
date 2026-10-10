@@ -1,0 +1,56 @@
+{
+  "schema": "gmr.process-recovery-scenario/v1",
+  "id": "clamp-induced-distortion",
+  "title": "Clamp Load Bows Datum A",
+  "objective": "Separate incoming stock flatness from fixture-induced distortion using unclamped/clamped metrology plus a human setup correction, then reduce clamp load and remeasure.",
+  "expectedDiagnosis": "clamp-induced-distortion",
+  "expectedRecommendedAction": "SetClampForceScale",
+  "initialObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-CLAMP-METROLOGY-01",
+      "source": {
+        "kind": "metrology",
+        "systemId": "fixture-cmm",
+        "method": "clamped-vs-unclamped-plane-fit"
+      },
+      "kind": "fixture-distortion",
+      "characteristicId": "IC-A-FLATNESS",
+      "unclampedFlatnessMm": 0.032,
+      "clampedFlatnessMm": 0.192,
+      "clampForceScale": 1,
+      "measurementSystemId": "fixture-cmm"
+    },
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-CLAMP-HUMAN-01",
+      "source": {
+        "kind": "human",
+        "operatorId": "setup-tech-01",
+        "role": "setup-technician"
+      },
+      "kind": "human-correction",
+      "field": "clamp-force-scale",
+      "previousValue": 1,
+      "correctedValue": 1.2,
+      "reason": "Torque-wrench setting on the actual setup was 20% above the nominal traveler value."
+    }
+  ],
+  "verificationObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-CLAMP-VERIFY-01",
+      "source": {
+        "kind": "metrology",
+        "systemId": "fixture-cmm",
+        "method": "clamped-vs-unclamped-plane-fit"
+      },
+      "kind": "fixture-distortion",
+      "characteristicId": "IC-A-FLATNESS",
+      "unclampedFlatnessMm": 0.033,
+      "clampedFlatnessMm": 0.072,
+      "clampForceScale": 0.72,
+      "measurementSystemId": "fixture-cmm"
+    }
+  ]
+}

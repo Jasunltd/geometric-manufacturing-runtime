@@ -1,0 +1,54 @@
+{
+  "schema": "gmr.process-recovery-scenario/v1",
+  "id": "bore-tool-wear-drift",
+  "title": "Bore Drift Before Scrap",
+  "objective": "Detect a trusted payload-bore size trend approaching the lower limit, apply a bounded finish-bore diameter correction, and verify recovery before release.",
+  "expectedDiagnosis": "tool-wear-drift",
+  "expectedRecommendedAction": "AdjustToolDiameter",
+  "initialObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-BORE-TREND-01",
+      "source": {
+        "kind": "machine-feedback",
+        "systemId": "machine-probe",
+        "channel": "in-process-bore-probe"
+      },
+      "kind": "dimensional-trend",
+      "characteristicId": "IC-PAYLOAD-BORE-SIZE",
+      "valuesMm": [
+        16.01,
+        16.0085,
+        16.007,
+        16.005,
+        16.003
+      ],
+      "lowerLimitMm": 16,
+      "upperLimitMm": 16.018,
+      "measurementSystemId": "machine-probe"
+    }
+  ],
+  "verificationObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-BORE-VERIFY-01",
+      "source": {
+        "kind": "machine-feedback",
+        "systemId": "machine-probe",
+        "channel": "in-process-bore-probe"
+      },
+      "kind": "dimensional-trend",
+      "characteristicId": "IC-PAYLOAD-BORE-SIZE",
+      "valuesMm": [
+        16.0075,
+        16.008,
+        16.009,
+        16.0095,
+        16.0085
+      ],
+      "lowerLimitMm": 16,
+      "upperLimitMm": 16.018,
+      "measurementSystemId": "machine-probe"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.execution",
+  "public": {
+    "exports": [
+      {
+        "name": "bindExecutionPlan",
+        "arity": 3,
+        "returns": "BindingResult"
+      },
+      {
+        "name": "executionLifecycleMachine",
+        "arity": 0,
+        "returns": "StateMachine"
+      }
+    ]
+  },
+  "encapsulated": [
+    "program-machine-state identity compatibility",
+    "freshness refusal",
+    "work-envelope validation",
+    "measured-tool feasibility",
+    "bounded radial compensation",
+    "motion IR construction",
+    "execution-plan hashing",
+    "digest-only execution lifecycle orchestration"
+  ],
+  "depth": {
+    "maxPublicSymbols": 2,
+    "maxArgsPerExport": 3
+  },
+  "authority": "none"
+}

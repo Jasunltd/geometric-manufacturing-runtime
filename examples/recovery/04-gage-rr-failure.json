@@ -1,0 +1,42 @@
+{
+  "schema": "gmr.process-recovery-scenario/v1",
+  "id": "gage-rr-failure",
+  "title": "Bad Measurement System Blocks Compensation",
+  "objective": "Reject machining compensation when the bore measurement system fails GR&R, quarantine the gauge, and verify measurement-system recovery separately.",
+  "expectedDiagnosis": "measurement-system-inadequate",
+  "expectedRecommendedAction": "QuarantineMeasurementSystem",
+  "initialObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-GRR-FAIL-01",
+      "source": {
+        "kind": "metrology",
+        "systemId": "bore-gage-cmm",
+        "method": "crossed-gage-rr"
+      },
+      "kind": "gage-rr",
+      "measurementSystemId": "bore-gage-cmm",
+      "percentGrr": 38,
+      "ndc": 3,
+      "repeatabilityMm": 0.006,
+      "reproducibilityMm": 0.004
+    }
+  ],
+  "verificationObservations": [
+    {
+      "schema": "gmr.process-observation/v1",
+      "id": "OBS-GRR-VERIFY-01",
+      "source": {
+        "kind": "metrology",
+        "systemId": "bore-gage-cmm",
+        "method": "crossed-gage-rr-after-fixture-and-procedure-correction"
+      },
+      "kind": "gage-rr",
+      "measurementSystemId": "bore-gage-cmm",
+      "percentGrr": 8.7,
+      "ndc": 7,
+      "repeatabilityMm": 0.0014,
+      "reproducibilityMm": 0.001
+    }
+  ]
+}

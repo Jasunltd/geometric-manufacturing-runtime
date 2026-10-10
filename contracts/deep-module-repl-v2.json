@@ -1,0 +1,20 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.repl.v2",
+  "public": {
+    "exports": [
+      {"name":"GeometricManufacturingReplSession","arity":0,"returns":"ReplSession"}
+    ]
+  },
+  "encapsulated": [
+    "closed non-eval command parsing",
+    "DesignProblem session state",
+    "state-conditioned search plus exhaustive baseline selection flow",
+    "FEA request projection",
+    "CAM/Motion/controller dispatch",
+    "semantic identity/status projection",
+    "local non-authoritative history"
+  ],
+  "depth": {"maxPublicSymbols":1,"maxArgsPerExport":1},
+  "authority": "none"
+}

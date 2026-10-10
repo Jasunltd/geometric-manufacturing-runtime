@@ -1,0 +1,26 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.controllers",
+  "public": {
+    "exports": [
+      {"name":"controllerProfile","arity":1,"returns":"ControllerProfile"},
+      {"name":"postMotionProgram","arity":2,"returns":"ControllerProgram"},
+      {"name":"compileLinuxCncVerificationFixture","arity":3,"returns":"LinuxCncVerificationFixture"},
+      {"name":"bindLinuxCncRs274Receipt","arity":3,"returns":"CompileResult<LinuxCncInterpreterVerificationBinding>"}
+    ]
+  },
+  "encapsulated": [
+    "target capability declaration",
+    "target-specific program envelope",
+    "G/M-code spelling and termination",
+    "controller block constraints",
+    "controller-specific tool-length activation semantics",
+    "Motion IR to NC lowering",
+    "NC-block to Motion-command trace",
+    "target artifact content identity",
+    "standalone-interpreter verification fixture generation",
+    "recorded LinuxCNC rs274 receipt binding"
+  ],
+  "depth": {"maxPublicSymbols":4,"maxArgsPerExport":3},
+  "authority": "none"
+}

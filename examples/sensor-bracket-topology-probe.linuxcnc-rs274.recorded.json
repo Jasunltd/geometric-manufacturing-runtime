@@ -1,0 +1,28 @@
+{
+  "schema": "gmr.linuxcnc-rs274-recorded/v1",
+  "fixtureDigest": "sha256:bf5339803f63a583fc3ce5b9a85d3cfbcc366cfaae69fb3238dbc570b7c98808",
+  "controllerArtifactDigest": "sha256:e34a3fefd05a2821a052ad4b4a4832abfec62b2248dd087d9d4b097216f09d1f",
+  "ncTextSha256": "sha256:548f94efa0de2bace4a6d07eb557bdbaf91a249462f3bc86177647286fa00c80",
+  "source": {
+    "interpreter": "rs274",
+    "linuxCncVersion": "2.9.8",
+    "packageSha256": "sha256:9234ff1e831ca42fedeccd08c5b6911f4e835772da04d7cf16fdb805388a64e4",
+    "packageSource": "https://www.linuxcnc.org/iso/linuxcnc-uspace_2.9.8_amd64.deb",
+    "containerBase": "debian:bookworm",
+    "containerBaseDigest": "sha256:f37a335e82bca302e955fa39f9dfe28f1be618f016f8a2b56318e5a5111afc26"
+  },
+  "execution": {
+    "command": "rs274 -g -i machine.ini -t tool.tbl program.ngc canonical.out",
+    "exitCode": 0,
+    "canonicalOutputSha256": "sha256:779f55ef5d71d406f9e37f18a9842dbcd146af015c83db4bb6b0315baba673e9",
+    "canonicalOutputLineCount": 130
+  },
+  "disposition": "accepted",
+  "limitations": [
+    "LinuxCNC rs274 standalone-interpreter acceptance verifies RS274NGC interpretation and canonical-function lowering for the recorded NC/tool-table/metric-machine fixture; it is not physical machine authorization.",
+    "The verification does not execute realtime motion, HAL, servo loops, actual machine kinematics, spindle/toolchanger hardware, fixtures, holders, clamp loads, or material cutting.",
+    "Tool-table Z offsets are zero and diameters are the nominal portfolio tools; production offsets remain setup/tool-table responsibility.",
+    "G54 is zero in the standalone verification environment; physical work-offset establishment remains a setup/metrology obligation.",
+    "Successful interpreter acceptance does not establish feeds/speeds, workholding, collision clearance, part quality, or physical process capability."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.program",
+  "public": {
+    "exports": [
+      {
+        "name": "compileManufacturingProgram",
+        "arity": 1,
+        "returns": "CompileResult<ManufacturingProgram>"
+      },
+      {
+        "name": "inspectGeneratedGeometry",
+        "arity": 2,
+        "returns": "GeneratedCapsule | undefined"
+      }
+    ]
+  },
+  "encapsulated": [
+    "open-input compilation",
+    "normalized tool/process DAG construction",
+    "tool-operation reference validation",
+    "capsule swept-geometry derivation",
+    "canonical definition hashing",
+    "canonical geometry hashing"
+  ],
+  "depth": {
+    "maxPublicSymbols": 2,
+    "maxArgsPerExport": 2
+  },
+  "authority": "none"
+}

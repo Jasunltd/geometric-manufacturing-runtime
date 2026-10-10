@@ -1,0 +1,86 @@
+{
+  "schema": "fixture-structural.analysis/v1",
+  "studyId": "candidate-0046",
+  "geometryDigest": "sha256:e6119970895b15d6975651d2b97daf244404f7b39e26b232c4a0d4dca8e5baae",
+  "configPath": "analysis/config.json",
+  "analytical": {
+    "schema": "fixture-structural.analytical/v1",
+    "assumption": "euler-bernoulli-variable-section",
+    "supportPlaneXMm": 12,
+    "loadPointXMm": 70,
+    "reactionForceN": 120,
+    "reactionMomentNmm": 6960,
+    "displacementAtLoadMm": -0.06398153354924384,
+    "maxNominalBendingStressMPa": 18.75,
+    "maxStressXMm": 12,
+    "planformAreaMm2": 2884.1141821750675,
+    "volumeMm3": 23072.91345740054,
+    "massKg": 0.06229686633498146,
+    "integrationIntervals": 20000,
+    "limitations": [
+      "Support is reduced to a rigid section at the mounting-hole center plane.",
+      "Euler-Bernoulli kinematics omit transverse shear and local three-dimensional stress fields.",
+      "Hole effects enter the section stiffness through exact circular chord removal only; local stress concentration is not represented.",
+      "This is a numerical analytical projection of the authoritative edge geometry, not physical validation."
+    ]
+  },
+  "numerical": [
+    {
+      "meshSizeMm": 8,
+      "nodeCount": 2422,
+      "mountNodeCount": 96,
+      "loadNodeCount": 80,
+      "loadAverageUzMm": -0.06269031699999998,
+      "loadMaxAbsUzMm": 0.0774253,
+      "reactionSumZN": 119.99999823399999,
+      "forceBalanceErrorN": 0.0000017660000111163754,
+      "maxIntegrationPointVonMisesMPa": 25.068586198153277
+    },
+    {
+      "meshSizeMm": 5,
+      "nodeCount": 4109,
+      "mountNodeCount": 128,
+      "loadNodeCount": 168,
+      "loadAverageUzMm": -0.06293860333333334,
+      "loadMaxAbsUzMm": 0.07774965,
+      "reactionSumZN": 119.99998070000001,
+      "forceBalanceErrorN": 0.000019299999991062577,
+      "maxIntegrationPointVonMisesMPa": 21.260996640953334
+    },
+    {
+      "meshSizeMm": 3.5,
+      "nodeCount": 8432,
+      "mountNodeCount": 320,
+      "loadNodeCount": 288,
+      "loadAverageUzMm": -0.06319071177083331,
+      "loadMaxAbsUzMm": 0.07805195,
+      "reactionSumZN": 119.99998984399997,
+      "forceBalanceErrorN": 0.000010156000030292489,
+      "maxIntegrationPointVonMisesMPa": 22.727755436475377
+    }
+  ],
+  "comparison": {
+    "displacementRelativeChange": 0.003989643895993151,
+    "displacementConverged": true,
+    "analyticalToFinestRelativeDeviation": 0.012514842074868733,
+    "analyticalAgreementWithinDeclaredBand": true,
+    "note": "Agreement bands are study diagnostics, not structural acceptance criteria."
+  },
+  "toolchain": {
+    "gmshVersion": "4.15.2-nox",
+    "ccxVersion": "This is Version 2.23"
+  },
+  "modelForm": {
+    "element": "C3D10 quadratic tetrahedral solid",
+    "mountBoundary": "all translational DOFs fixed on nodes classified to both mounting-hole cylindrical surfaces",
+    "loadBoundary": "declared transverse load equally distributed over nodes classified to the load-hole cylindrical surface",
+    "omitted": [
+      "bolt preload",
+      "contact/friction",
+      "base-fixture compliance",
+      "material nonlinearity",
+      "residual stress",
+      "manufacturing variation"
+    ]
+  }
+}

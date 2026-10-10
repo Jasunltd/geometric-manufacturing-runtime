@@ -1,0 +1,31 @@
+{
+  "name": "geometric-manufacturing-runtime",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Constraint-driven generative manufacturing design: typed design search, build123d/FEA, CAM/Motion IR, controller verification, manufacturing dossiers, and observation-driven process recovery.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "verify": "npm run check && npm test",
+    "repl": "npm run build && node dist/src/repl/cli.js",
+    "demo": "npm run build && node dist/src/demo.js",
+    "geometry:setup": "python3 -m venv .venv && .venv/bin/pip install -r requirements-build123d.txt",
+    "reporting:setup": ".venv/bin/pip install -r requirements-reporting.txt",
+    "setup:portfolio": "python3 -m venv .venv && .venv/bin/pip install -r requirements-build123d.txt -r requirements-reporting.txt",
+    "recovery:demo": "npm run build && node dist/src/recovery-demo.js",
+    "portfolio:demo": "npm run demo && npm run recovery:demo"
+  },
+  "dependencies": {
+    "effect": "3.22.2",
+    "xstate": "5.33.2"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.4",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.design.search",
+  "public": {
+    "exports": [
+      {
+        "name": "evaluateDesignState",
+        "arity": 2,
+        "returns": "DesignStateEvaluation"
+      },
+      {
+        "name": "enumerateDesignActions",
+        "arity": 2,
+        "returns": "readonly DesignAction[]"
+      },
+      {
+        "name": "applyDesignAction",
+        "arity": 3,
+        "returns": "DesignActionApplication"
+      },
+      {
+        "name": "searchDesign",
+        "arity": 2,
+        "returns": "DesignSearch"
+      }
+    ]
+  },
+  "encapsulated": [
+    "construction-to-state evaluation",
+    "explicit engineering obligation projection",
+    "state-conditioned valid-action masking",
+    "grammar-bound one-step parameter transforms",
+    "admitted topology transition semantics",
+    "state-bound action content identity",
+    "stale/tampered action refusal",
+    "bounded best-first policy",
+    "search budget stop condition",
+    "state/action DAG provenance",
+    "winning-path reconstruction"
+  ],
+  "depth": {
+    "maxPublicSymbols": 4,
+    "maxArgsPerExport": 3
+  },
+  "authority": "none"
+}

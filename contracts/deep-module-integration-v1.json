@@ -1,0 +1,24 @@
+{
+  "schema": "agent-workbench.deep-module-contract/v1",
+  "module": "geometric-manufacturing-runtime.integration",
+  "public": {
+    "exports": [
+      {
+        "name": "buildFullSystemTrace",
+        "arity": 1,
+        "returns": "FullSystemTrace"
+      }
+    ]
+  },
+  "encapsulated": [
+    "program-plan identity consistency",
+    "external evidence identity binding",
+    "cross-lane provenance normalization",
+    "content-addressed full-system trace identity"
+  ],
+  "depth": {
+    "maxPublicSymbols": 1,
+    "maxArgsPerExport": 1
+  },
+  "authority": "none"
+}
