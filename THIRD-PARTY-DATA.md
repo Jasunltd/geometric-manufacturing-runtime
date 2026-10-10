@@ -47,6 +47,7 @@ standards text, or third-party data**. Exact upstream terms must be checked
 before redistribution of any third-party binary or recorded material outside
 the reviewed files.
 
-Source-tree provenance and copyright/patent/invention-assignment permissions
-remain a separate gate before public publication. Referencing an external
-project does not imply affiliation or endorsement.
+Source provenance and independent toolchain citations are recorded
+above. Referencing an external project does not imply affiliation,
+certification or endorsement. Any future redistribution of toolchain
+binaries must comply with their upstream license terms.

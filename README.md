@@ -165,10 +165,11 @@ For the detailed rationale, see [ARCHITECTURE.md](ARCHITECTURE.md).
 ## License
 
 The original project-authored software code and associated original software
-documentation are staged under the [MIT License](LICENSE) in this unpublished
-candidate. See [license scope](LICENSE-SCOPE.md) for exclusions and rights
-review. This does not relicense third-party tools, sources, measurements or
-datasets, nor establish publication clearance.
+documentation are published under the [MIT License](LICENSE).
+See [license scope](LICENSE-SCOPE.md) and
+[third-party source attribution](THIRD-PARTY-DATA.md) for exclusions.
+This license does not relicense external tools, datasets, vendor standards
+or recorded third-party material.
 
 
 

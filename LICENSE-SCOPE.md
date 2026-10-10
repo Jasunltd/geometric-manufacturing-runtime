@@ -1,27 +1,24 @@
-# License scope and third-party materials
+# MIT software license and third-party rights
 
-The root MIT License is selected for the **original authored software source
-code and associated original software documentation** in this unpublished
-GitHub source candidate, subject to confirmation of copyright ownership,
-contributors' rights, prior invention assignments, and publication approval.
+The original project-authored software source, test code, synthetic fixtures,
+and associated original software documentation in this public GitHub
+repository are provided under the [MIT License](LICENSE).
 
-This software license does **not** purport to grant rights to:
+This **does not relicense** any separately owned external material, including:
 
-- public or third-party datasets, measurements, imagery, diagrams, media,
-  research papers, third-party source repositories, or other materials for
-  which an external rights holder or separate license governs;
-- included derived datasets where upstream data license attribution, reuse,
-  share-alike, or other limitations apply;
-- external CAD, structural-analysis, machine-control, or visualization
-  software invoked during research but not included in the authored source;
-- any employer-confidential, customer-owned, or independently assigned
-  material, if discovered during final rights review.
+- Zenodo, UCI, NIST or other research datasets and their derivatives to the
+  extent they remain subject to the original dataset terms;
+- published research papers, academic standards, vendor manuals,
+  independently licensed diagrams or media;
+- external CAD/CAE/CNC toolchains, Python libraries, npm packages and other
+  third-party code;
+- external companies' trademarks, product identity, or vendor certifications.
 
-Consult the source registers and accompanying study provenance, including
-`THIRD-PARTY-DATA.md` where available. Keep CC BY attribution, source DOI,
-license URL, and indication of modifications for redistributed data where
-required by the applicable dataset license.
+The appropriate original source credits, license references and required
+notices of changes to data are in [ATTRIBUTION.md](ATTRIBUTION.md) and
+[THIRD-PARTY-DATA.md](THIRD-PARTY-DATA.md). The raw external source
+archives and underlying toolchain binaries are not bundled.
 
-This is a **private preparation**. The candidate's package keeps
-`private: true`; no GitHub push, public release, commercial deployment,
-npm publication, or ownership/patent clearance is implied.
+Where `package.json` contains `"private": true`, that is an **npm registry
+publishing safeguard**, not the visibility of this public GitHub repository.
+This public source release does not include an npm registry publication.

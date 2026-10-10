@@ -1,7 +1,7 @@
 # Attribution and rights register
 
-- **Authored software:** [MIT](LICENSE), subject to contributor ownership
-  verification. See [license scope](LICENSE-SCOPE.md).
+- **Authored software:** [MIT](LICENSE), with authored source and external dependency boundaries
+  described. See [license scope](LICENSE-SCOPE.md).
 - **External toolchains:** build123d/OCCT, Gmsh, CalculiX, LinuxCNC,
   Haas NGC and ReportLab; external versions, documentation URLs and
   separation from authored code are in [THIRD-PARTY-DATA.md](THIRD-PARTY-DATA.md).
